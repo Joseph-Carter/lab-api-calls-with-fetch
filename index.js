@@ -17,7 +17,7 @@ function createQuestion(qObject) {
 function questionTemplate(qObject) {
 
     let categoryText = qObject.category
-    let correctAnswerText = qObject.corrrect_answer 
+    let correctAnswerText = qObject.correct_answer 
     let questionText = qObject.question
     
     let article = document.createElement('article')
@@ -25,6 +25,9 @@ function questionTemplate(qObject) {
     let question = document.createElement('p')
     let showAnswer = document.createElement('button')
     let correctAnswer = document.createElement('p')
+    
+    article.classList.add('card')
+    correctAnswer.classList.add('hidden')
 
     category.innerText = categoryText
     question.innerText = questionText
@@ -32,12 +35,11 @@ function questionTemplate(qObject) {
     correctAnswer.innerText = correctAnswerText
 
     
-    article.classList.add('card')
-    correctAnswer.classList.add('hidden')
 
     showAnswer.addEventListener('click', (e) => {
-        correctAnswer.classList.add('toggle')
-        if(showAnswer.innerText != 'Show Answer') {
+        console.log('fired')
+        correctAnswer.classList.toggle('hidden')
+        if(showAnswer.innerText == 'Show Answer') {
             showAnswer.innerText = 'Hide Answer'
         } else {
             showAnswer.innerText = 'Show Answer'
